@@ -1,24 +1,57 @@
-# README
+## users テーブル
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| nick_name          | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birthday           | integer| null: false               |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
 
-Things you may want to cover:
+- has_many :items
+- has_many :destinations
 
-* Ruby version
+## items テーブル
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| item_name          | string | null: false               |
+| caption            | string | null: false               |
+| category           | integer| null: false               |
+| condition          | integer| null: false               |
+| postage            | integer| null: false               |
+| region             | integer| null: false               |
+| days_to_ship       | integer| null: false               |
+| user_id            | integer| null: false               |
+| photo_id           | integer| null: false               |
+| destination_id     | integer|                           |
+| sold_out           | integer| null: false               |
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+### Association
 
-* Database initialization
+- belongs_to :user
+- has_one :destination
 
-* How to run the test suite
+## destinations テーブル
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| post_code          | integer| null: false               |
+| prefecture         | integer| null: false               |
+| city               | string | null: false               |
+| street_address     | string | null: false               |
+| building           | string | null: false               |
+| phone_number       | integer| null: false               |
+| days_to_ship       | integer| null: false               |
+| user_id            | integer| null: false               |
+| photo_id           | integer| null: false               |
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### Association
 
-* ...
+- belongs_to :user
+- belongs_to :item
