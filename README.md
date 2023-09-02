@@ -22,12 +22,11 @@
 | caption            | text      | null: false                     |
 | category_id        | integer   | null: false                     |
 | condition_id       | integer   | null: false                     |
-| postage            | integer   | null: false                     |
+| postage_id         | integer   | null: false                     |
 | region_id          | integer   | null: false                     |
 | days_to_ship_id    | integer   | null: false                     |
 | price              | integer   | null: false                     |
 | user               | references| null: false, foreign_key: true  |
-| purchase           | references| foreign_key: true               |
 
 
 ### Association
@@ -38,13 +37,13 @@
 ## destinations テーブル
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
-| post_code          | integer    | null: false                     |
-| prefecture         | integer    | null: false                     |
+| post_code          | string     | null: false                     |
+| region_id          | integer    | null: false                     |
 | city               | string     | null: false                     |
 | street_address     | string     | null: false                     |
 | building           | string     | null: false                     |
-| phone_number       | integer    | null: false                     |
-| purchases          | references | null: false, foreign_key: true  |
+| phone_number       | string     | null: false                     |
+| purchase           | references | null: false, foreign_key: true  |
 
 ### Association
 
