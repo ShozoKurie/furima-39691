@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   VALID_PASSWORD_REGEX_JP = /\A[ぁ-んァ-ン一-龥]/
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   VALID_PASSWORD_REGEX_KKANA = /\A[ァ-ヶー－]+\z/
 
   validates :nickname, presence: true
