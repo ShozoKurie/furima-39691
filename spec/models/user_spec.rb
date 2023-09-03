@@ -109,10 +109,7 @@ RSpec.describe User, type: :model do
         @user.first_name_kana = 'てすと'
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana is invalid")
-      end
-    end
-    context 'ユーザー新規登録ができる場合' do
-      
+      end      
     end
   end
 end
