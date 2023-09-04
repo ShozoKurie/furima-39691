@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  VALID_PASSWORD_REGEX_JP = /\A[ぁ-んァ-ン一-龥]/
+  VALID_PASSWORD_REGEX_JP = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   VALID_PASSWORD_REGEX_KKANA = /\A[ァ-ヶー－]+\z/
 
@@ -15,6 +15,6 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :password, format: { with: VALID_PASSWORD_REGEX }
 
-  has_many :items
-  has_many :purchases
+  # has_many :items
+  # has_many :purchases
 end
