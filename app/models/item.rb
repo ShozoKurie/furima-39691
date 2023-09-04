@@ -1,7 +1,9 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_one :region
-
+  belongs_to :category
+  has_one :condition
+  
 
   validates :item_name, presence: true
   validates :caption, presence: true
