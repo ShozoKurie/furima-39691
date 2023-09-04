@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_one :region
   belongs_to :category
   has_one :condition
+  has_one_attached :image
 
 
   validates :item_name, presence: true
