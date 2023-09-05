@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   validates :postage_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :region_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :days_to_ship_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :price, presence: true,numericality: {  in: 300..9999999 }
+  validates :price, presence: true,numericality: { in: 300..9999999, message: "must be in 300~9999999 by Single-byte numeric value" } 
   validates :user, presence: true
   validates :image, presence: true  
 
