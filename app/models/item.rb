@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :category
   has_one :condition
   has_one_attached :image
+  belongs_to :user
 
 
   validates :item_name, presence: true
