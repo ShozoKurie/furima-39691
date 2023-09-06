@@ -14,7 +14,6 @@ function culculate() {
       profit.textContent = Math.floor(profitValue)
     }
   })
-    
 }
+window.addEventListener('turbo:load', culculate)
 
-window.addEventListener('load', culculate)
