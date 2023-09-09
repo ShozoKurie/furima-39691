@@ -1,0 +1,2 @@
+class Puchase < ApplicationRecord
+end
