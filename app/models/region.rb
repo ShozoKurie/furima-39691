@@ -19,5 +19,6 @@ class Region < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  belongs_to :item
+  has_many :items
+  has_many :destinations
 end
