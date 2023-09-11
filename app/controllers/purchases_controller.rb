@@ -2,6 +2,7 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
   before_action :shut_item_owner, only: [:index, :create]
+  before_action :stop_buying_sold_item, only: [:index, :create]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -9,6 +10,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    binding.pry
     @purchase_destination = PurchaseDestination.new(purchase_params)
     if @purchase_destination.valid?
       pay_item
@@ -32,6 +34,12 @@ class PurchasesController < ApplicationController
 
   def shut_item_owner
     if current_user == @item.user
+      redirect_to root_path
+    end
+  end
+
+  def stop_buying_sold_item
+    if @item.purchase
       redirect_to root_path
     end
   end
