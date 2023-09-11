@@ -22,6 +22,16 @@ RSpec.describe PurchaseDestination, type: :model do
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Token can't be blank")
       end
+      it 'post_codeが空では購入できない' do
+        @purchase_destination.post_code = ''
+        @purchase_destination.valid?
+        expect(@purchase_destination.errors.full_messages).to include("Post code can't be blank")
+      end
+      it 'post_codeが半角ハイフンを含む形でなければ購入できない' do
+        @purchase_destination.post_code = '1234567'
+        @purchase_destination.valid?
+        expect(@purchase_destination.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+      end
       it 'region_idが---では購入できない' do
         @purchase_destination.region_id = '1'
         @purchase_destination.valid?
