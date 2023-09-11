@@ -42,6 +42,21 @@ RSpec.describe PurchaseDestination, type: :model do
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Phone number can't be blank")
       end
+      it 'phone_numberが9桁以下では購入できない' do
+        @purchase_destination.phone_number = '123456789'
+        @purchase_destination.valid?
+        expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid. Include hyphen(-)")
+      end
+      it 'phone_numberが12桁以上では購入できない' do
+        @purchase_destination.phone_number = '123456789012'
+        @purchase_destination.valid?
+        expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid. Include hyphen(-)")
+      end
+      it 'phone_numberが半角数値以外では購入できない' do
+        @purchase_destination.phone_number = '１２３４５６７８９０'
+        @purchase_destination.valid?
+        expect(@purchase_destination.errors.full_messages).to include("Phone number is invalid. Include hyphen(-)")
+      end
       it 'user_idが空では購入できない' do
         @purchase_destination.user_id = ''
         @purchase_destination.valid?
