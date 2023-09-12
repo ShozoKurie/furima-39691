@@ -16,4 +16,4 @@ function culculate() {
   })
 }
 window.addEventListener('turbo:load', culculate)
-
+window.addEventListener("turbo:render",culculate);
